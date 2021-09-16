@@ -1,3 +1,4 @@
+[Discussion Post (created on 16/8/2021 at 13:47)](https://leetcode.com/problems/spiral-matrix/discuss/1466508/cpp-faster-than-100-easy-to-understand-direction-based)  
 <h2>54. Spiral Matrix</h2><h3>Medium</h3><hr><div><p>Given an <code>m x n</code> <code>matrix</code>, return <em>all elements of the</em> <code>matrix</code> <em>in spiral order</em>.</p>
 
 <p>&nbsp;</p>
