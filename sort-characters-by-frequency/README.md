@@ -1,3 +1,4 @@
+[Discussion Post (created on 22/9/2021 at 11:37)](https://leetcode.com/problems/sort-characters-by-frequency/discuss/1534273/cpp-using-vector-map-easy-to-understand-!)  
 <h2>451. Sort Characters By Frequency</h2><h3>Medium</h3><hr><div><p>Given a string <code>s</code>, sort it in <strong>decreasing order</strong> based on the <strong>frequency</strong> of the characters. The <strong>frequency</strong> of a character is the number of times it appears in the string.</p>
 
 <p>Return <em>the sorted string</em>. If there are multiple answers, return <em>any of them</em>.</p>
