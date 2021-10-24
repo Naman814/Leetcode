@@ -12,7 +12,6 @@
 class Solution {
 public:
      int leftheight(TreeNode* root){
-     int lh=0;
      if(!root) return 0;
      int x=leftheight(root->left);
      return x+1;
