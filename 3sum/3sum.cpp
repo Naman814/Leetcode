@@ -1,35 +1,56 @@
 class Solution {
 public:
-   vector<vector<int>> threeSum(vector<int>& nums) {
-    int n = nums.size();
-    set<vector<int>> v;
-    int l, r;
-    
-    sort(nums.begin(), nums.end());
-    
-    for(int i=0; i<n-1; i++){
-        l=i+1, r=n-1;
+   
+    vector<vector<int>> threeSum(vector<int>& nums) { 
+        vector<vector<int>> res;
         
-        while(l<r){
-            if(nums[i]+nums[l]+nums[r] == 0){
-                v.insert({nums[i], nums[l], nums[r]});
-                l++, r--;
-            }
-            else if(nums[i]+nums[l]+nums[r] > 0){
-                r--;
-            }
-            else{
-                l++;
-            }
+        if (nums.size() < 3) {
+            return res;
         }
-    }
-    
-    vector<vector<int>> res;
-    for(auto i=v.begin(); i!=v.end(); i++){
-        res.push_back(*i);
-    }
-    return res;
+        sort(nums.begin(), nums.end());
         
+        int n = nums.size();
+        
+        int target;
+        
+        for (int i = 0; i < n; i++) {
+            if (i == 0 || nums[i] != nums[i - 1]) {
+         
+                target = -nums[i];
+                
+                int j = i + 1;
+                int k = n - 1;
+          
+                int a, b;
+                
+                while (j < k) {
+                    a = nums[j];
+                    b = nums[k];
+                    
+                    if (a + b == target) {
+                       
+                        res.push_back({nums[i], a, b});
+                     
+                        while (j < k && nums[j] == a) {
+                      
+                            j++;
+                        }
+                        
+                        while (j < k && nums[k] == b) {
+              
+                            k--;
+                        }
+                    }
+                    else {
+                          a + b > target ? --k : ++j;
+                       
+                    }
+                }
+            }
+        }  
     
-}
+        return res;
+        
+    }
+    
 };
