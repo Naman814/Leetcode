@@ -1,61 +1,40 @@
 class Solution {
 public:
-   int orangesRotting(vector<vector<int>>& grid) {
-        int row=grid.size();
-        int col=grid[0].size();
-        queue<pair<int,pair<int,int>>> q;
-        for(int i=0;i<row;i++)
-        {
-            for(int j=0;j<col;j++)
-            {
-                if(grid[i][j]==2)
-                {
-                    q.push({0,{i,j}});
-                }
-            }
-        }
+      int orangesRotting(vector<vector<int>>& grid) {
+       queue<pair<int,int>> q;
+       int n=grid.size() , m=grid[0].size() ,cnt=0, total=0 , min_time=0 ,k;
+       if(grid.empty()) return 0;
+       for(int i=0;i<n;i++){
+           for(int j=0;j<m;j++){
+               if(grid[i][j]!=0){
+                   total++;
+                    if(grid[i][j]==2){
+                    q.push({i,j});
+                    }
+               }
+           }
+       }
+       int dx[]={1,-1,0,0};
+       int dy[]={0,0,1,-1};
+       while(!q.empty()){
+           k=q.size();
+           cnt+=k;
+           while(k--){
+           int x=q.front().first;
+           int y=q.front().second;
+           q.pop();
+           for(int i=0;i<4;i++){
+               int nx=dx[i]+x;
+               int ny=dy[i]+y;
+               if(nx<0 || ny<0 || nx>=n || ny>=m || grid[nx][ny]!=1) continue;
+               grid[nx][ny]=2;
+               q.push({nx,ny});
+             }
+           }
+           if(!q.empty()) min_time++;
+           
+           }
+       return cnt==total?min_time : -1;
        
-        int time1=0;
-        while(!q.empty())
-        {
-            time1=q.front().first;
-            int i=q.front().second.first;
-            int j=q.front().second.second;
-        
-            q.pop(); 
-            
-                if(i-1>=0 && i-1<row && grid[i-1][j]==1)
-                {
-                    grid[i-1][j]=2;
-                    q.push({time1+1,{i-1,j}});
-                }
-                if(i+1>=0 && i+1<row  &&  grid[i+1][j]==1)
-                {
-                    grid[i+1][j]=2;
-                    q.push({time1+1,{i+1,j}});
-                }
-                if(j-1>=0 && j-1<col && grid[i][j-1]==1)
-                {
-                    grid[i][j-1]=2;
-                    q.push({time1+1,{i,j-1}});
-                }
-                if(j+1>=0 && j+1<col && grid[i][j+1]==1)
-                {
-                    grid[i][j+1]=2;
-                    q.push({time1+1,{i,j+1}});
-                }
-            
-        }
-        for(int i=0;i<row;i++)
-        {
-            for(int j=0;j<col;j++)
-            {
-                if(grid[i][j]==1)
-                {
-                    return -1;
-                }
-            }
-        }
-        return time1;
     }
 };
