@@ -1,3 +1,4 @@
+[Discussion Post (created on 2/10/2021 at 15:3)](https://leetcode.com/problems/unique-paths/discuss/1554665/cpp-faster-than-100)  
 <h2>62. Unique Paths</h2><h3>Medium</h3><hr><div><p>A robot is located at the top-left corner of a <code>m x n</code> grid (marked 'Start' in the diagram below).</p>
 
 <p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).</p>
