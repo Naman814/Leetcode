@@ -1,3 +1,4 @@
+[Discussion Post (created on 26/10/2021 at 0:38)](https://leetcode.com/problems/maximum-subarray/discuss/1596181/kandane's-algo)  
 <h2>53. Maximum Subarray</h2><h3>Easy</h3><hr><div><p>Given an integer array <code>nums</code>, find the contiguous subarray (containing at least one number) which has the largest sum and return <em>its sum</em>.</p>
 
 <p>A <strong>subarray</strong> is a <strong>contiguous</strong> part of an array.</p>
