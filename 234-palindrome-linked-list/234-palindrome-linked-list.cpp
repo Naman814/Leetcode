@@ -44,7 +44,7 @@ public:
             q=q->next;
         }
         
-        mid->next=reverseList(mid->next);
+       // mid->next=reverseList(mid->next);
         if(q==NULL){
             return 1;
         }
