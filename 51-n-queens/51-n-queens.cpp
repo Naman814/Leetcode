@@ -1,44 +1,24 @@
 class Solution {
 public:
     
-    bool issafe(vector<string> &board,int row,int col,int n){
-        int temprow=row, tempcol=col;
-        while(row>=0 and col>=0){
-            if(board[row][col]=='Q'){
-                return false;
-            }
-            row--;
-            col--;
-        }
-        row=temprow;
-        col=tempcol;
-        while(col>=0){
-            if(board[row][col]=='Q'){
-                return false;
-            }
-            col--;
-        }
-        col=tempcol;
-        while(row<n and col>=0){
-            if(board[row][col]=='Q'){
-                return false;
-            }
-            row++;
-            col--;
-        }
-        return true;
-    }
     
-    void solve(vector<vector<string>> &res,vector<string> &board,int col, int n){
+    void solve(vector<vector<string>> &res,vector<string> &board,int col,vector<int> &leftarray,
+               vector<int> &upperarray,vector<int> &lowerarray,int n){
         if(col==n){
             res.push_back(board);
             return;
         }
         for(int row=0;row<n;row++){
-            if(issafe(board,row,col,n)){
+            if(leftarray[row]==0 and upperarray[row+col]==0 and lowerarray[n-1+col-row]==0){
                 board[row][col]='Q';
-                solve(res,board,col+1,n);
+                leftarray[row]=1;
+                upperarray[row+col]=1;
+                lowerarray[n-1+col-row]=1;
+                solve(res,board,col+1,leftarray,upperarray,lowerarray,n);
                 board[row][col]='.';
+                leftarray[row]=0;
+                upperarray[row+col]=0;
+                lowerarray[n-1+col-row]=0;    
             }
         }
     }
@@ -49,7 +29,10 @@ public:
         for(int i=0;i<n;i++){
             board[i]=s;
         }
-        solve(res,board,0,n);
+        vector<int> leftarray(n,0);
+        vector<int> upperarray(2*n-1,0);
+        vector<int> lowerarray(2*n-1,0);
+        solve(res,board,0,leftarray,upperarray,lowerarray,n);
         return res;
     }
 };
