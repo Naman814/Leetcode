@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int res=*max_element(nums.begin(),nums.end());
+        int res=INT_MIN;
         int currmax=1, currmin=1;
         for(auto x:nums){
             int temp= currmax*x;
