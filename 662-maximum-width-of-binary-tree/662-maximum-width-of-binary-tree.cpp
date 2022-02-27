@@ -1,39 +1,31 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
         if(!root) return 0;
         queue<pair<TreeNode*,int>> q;
         q.push({root,0});
-        int res =0;
+        int res = 0;
         while(!q.empty()){
-            int n =q.size();
-            int mini = q.front().second;
-            int first,last;
+            int n = q.size();
+            int currmin = q.front().second,leftidx,rightidx;
             for(int i=0;i<n;i++){
-                long long int curr = q.front().second - mini;
-                root = q.front().first;
+                long long int currid = q.front().second;
+                TreeNode * temp = q.front().first;
                 q.pop();
-                if(i==0) first = curr;
-                if(i==n-1) last = curr;
-                if(root->left){
-                    q.push({root->left,curr*2+1});
+                if(i==0){
+                    leftidx = currid;
                 }
-                if(root->right){
-                    q.push({root->right,curr*2+2});
+                if(i==n-1){
+                    rightidx = currid;
+                }
+                if(temp->left){
+                    q.push({temp->left,currid*2+1});
+                }
+                if(temp->right){
+                    q.push({temp->right,currid*2+2});
                 }
             }
-            res = max(res, last-first+1);
+            res = max(res,rightidx-leftidx+1);
         }
         return res;
     }
