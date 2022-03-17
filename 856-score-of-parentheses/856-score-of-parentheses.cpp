@@ -2,15 +2,16 @@ class Solution {
 public:
     int scoreOfParentheses(string s) {
         int currsum=0;
+        int curr=0;
         stack<int> stk;
-        for(auto x:s){
-            if(x=='('){
-                stk.push(currsum);
-                currsum=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='('){
+                curr++;
             }
             else{
-                currsum+=stk.top()+max(currsum,1);
-                stk.pop();
+                curr--;
+                if(s[i-1]=='(')
+                    currsum+=pow(2,curr);
             }
         }
         return currsum;
