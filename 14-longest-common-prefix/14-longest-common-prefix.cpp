@@ -7,7 +7,7 @@ public:
         
         sort(strs.begin(),strs.end());
         
-        int len=min(strs[0].length(),strs[n-1].length());
+        int len=strs[0].length();
         int i=0;
         string first=strs[0];
         string last=strs[n-1];
