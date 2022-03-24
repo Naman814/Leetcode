@@ -7,11 +7,8 @@ public:
         while(l<=h){
             if(people[l]+people[h]<=limit){
                 l++;
-                h--;
             }
-            else{
-                h--;
-            }
+            h--;
             res++;
         }
         return res;
