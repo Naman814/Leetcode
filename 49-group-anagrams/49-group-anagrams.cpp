@@ -9,11 +9,7 @@ public:
             m[temp].push_back(str);
         }
         for(auto x:m){
-            vector<string> s;
-            for(auto str:x.second){
-                s.push_back(str);
-            }
-            res.push_back(s);
+            res.push_back(x.second);
         }
         return res;
     }
