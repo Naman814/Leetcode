@@ -10,30 +10,19 @@
  */
 class Solution {
 public:
-    int len(ListNode* p){
-        int cnt=0;
-        while(p){
-            p=p->next;
-            cnt++;
-        }
-        return cnt;
-    }
     ListNode* swapNodes(ListNode* head, int k) {
-        ListNode* dummy = new ListNode(-1);
-        dummy->next = head;
-        int n = len(dummy);
-        ListNode*p = dummy,*q=dummy;
-        int temp = k;
-        while(temp--){
-            p = p->next;
+        ListNode *ptr1 = head, *ptr2 = head, *kth = NULL;
+        while (--k)
+            ptr1 = ptr1->next;
+        
+        kth = ptr1;
+        ptr1 = ptr1->next;
+        
+        while (ptr1) {
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
         }
-        temp = n-k;
-        while(temp--){
-            q = q->next;
-        }
-        temp = p->val;
-        p->val = q->val;
-        q->val = temp;
-        return dummy->next;
+        swap(ptr2->val, kth->val);
+        return head;
     }
 };
