@@ -18,6 +18,7 @@ public:
         k--;
         if(k==0){
             res = root->val;
+            return;
         }
         inorder(root->right,k);
     }
