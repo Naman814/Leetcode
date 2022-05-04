@@ -4,9 +4,9 @@ public:
         unordered_map<int,int> m;
         int res=0;
         for(int i=0;i<nums.size();i++){
-            if(m.find(k-nums[i])!=m.end()){
+            if(m[k-nums[i]]>0){
                 res++;
-                m[k-nums[i]]>1 ? m[k-nums[i]]-- : m.erase(k-nums[i]);
+                m[k-nums[i]]--;
             }
             else{
                 m[nums[i]]++;
