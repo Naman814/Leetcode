@@ -1,14 +1,14 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int n=nums.size();
-        int xo_r=n;
-        int i=0;
-        for(auto x:nums){
-            xo_r^=x;
-            xo_r^=i;
-            i++;
+        int res = nums[0];
+        int n = nums.size();
+        for(int i=1;i<n;i++){
+            res^=nums[i];
         }
-        return xo_r;
+        for(int i=0;i<=n;i++){
+            res^=i;
+        }
+        return res;
     }
 };
