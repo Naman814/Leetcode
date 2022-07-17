@@ -1,23 +1,24 @@
 class Solution {
 public:
-    int mem[10001][13];
-    int solve(vector<int>&coins,int amount,int idx){
-        if(idx==coins.size() || amount==0){
-            if(amount==0){
+    int dp[13][10001];
+    int solve(vector<int>&coins,int amt,int idx){
+        if(idx==coins.size() || amt<=0){
+            if(amt==0){
                 return 0;
             }
-            return INT_MAX-1;
+            return  INT_MAX-1;
         }
-        if(mem[amount][idx]!=-1) return mem[amount][idx];
-        if(coins[idx]<=amount){
-            return mem[amount][idx] = min(1 + solve(coins,amount-coins[idx],idx) , solve(coins,amount,idx+1));
+        if(dp[idx][amt]!=-1) return dp[idx][amt];
+        if(coins[idx]>amt){
+           return dp[idx][amt] = solve(coins,amt,idx+1)+0;
         }
-        else{    return mem[amount][idx]  = solve(coins,amount,idx+1); }
+        else{
+            return  dp[idx][amt] = min(1+solve(coins,amt-coins[idx],idx) ,solve(coins,amt,idx+1));
+        }
     }
     int coinChange(vector<int>& coins, int amount) {
-        
-         memset(mem,-1,sizeof(mem));
-         int mini =  solve(coins,amount,0);
-         return mini == INT_MAX-1 ? -1 : mini;
+        memset(dp,-1,sizeof(dp));
+        int x = solve(coins,amount,0);
+        return x==INT_MAX-1 ? -1 : x;
     }
 };
