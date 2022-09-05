@@ -33,7 +33,7 @@ public:
                 temp.push_back(curr->val);
                 q.pop();
                 for(auto x:curr->children){
-                    if(x) q.push(x);
+                     q.push(x);
                 } 
             }
             res.push_back(temp);
