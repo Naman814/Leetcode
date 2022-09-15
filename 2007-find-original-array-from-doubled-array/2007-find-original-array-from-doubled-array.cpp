@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& changed) {
-         map<int,int>mp;
+     unordered_map<int,int>mp;
       vector<int>ans;
      int n = changed.size();
      if(n%2)
@@ -12,6 +12,7 @@ public:
      {
          mp[x]++;
      }
+  
      sort(changed.begin(),changed.end());
      for(auto x:changed)
      {
@@ -26,6 +27,7 @@ public:
          if(mp[x] && mp[2*x])
          {
              mp[2*x]--;
+             cout<<x;
             ans.push_back(x);
              mp[x]--;
          }
