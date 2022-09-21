@@ -8,19 +8,9 @@ public:
       vector<int> res;
       for(auto x:queries){
           int val = x[0] , idx = x[1];
-          int temp = nums[idx];
+          if(nums[idx]%2==0) currEvenSum-=nums[idx];
           nums[idx]+=val;
-          int num = nums[idx];
-          if(temp%2!=0 && num%2==0){
-              currEvenSum+=num;
-          }
-          else if(temp%2==0 && num%2!=0){
-              currEvenSum-=temp;
-          }
-          else if(temp%2==0 && num%2==0){
-              currEvenSum-=temp;
-              currEvenSum+=num;
-          }
+          if(nums[idx]%2==0) currEvenSum+=nums[idx];
           res.push_back(currEvenSum);  
       }
         return res;
