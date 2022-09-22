@@ -1,10 +1,9 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        
         stringstream ss(s);
         string word="",res="";
-        while(ss>>word){
+        while(getline(ss,word,' ')){
             reverse(word.begin(),word.end());
             res+=word+" ";
         }
