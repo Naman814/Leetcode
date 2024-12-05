@@ -1,36 +1,36 @@
 class Solution {
 public:
-       void skipSpaces(string& s,int& n,int& pos){
-        while(pos<n and s[pos]=='_')
-            pos++;
-    }
-public:
-    bool canChange(string start, string target) {
-        int n=start.size();
-
-        int first=0,second=0;
-        int limit_idx = -1;
-        while(first<n){
-            //Skip all spaces
-            skipSpaces(start,n,first);
-            skipSpaces(target,n,second);
-            
-            if(first==n and second==n)          return true;
-            if(start[first]!=target[second])    return false;
-
-            if(start[first]=='L' and (second<=limit_idx or second>first))
-                return false;
-            else if(start[first]=='R' and first>second)
-                return false;
-    
-            limit_idx = second;
-            first++;
-            second++;
+    void skipspaces(string &s,int &n,int &idx){
+        while(idx<n and s[idx]=='_'){
+            idx++;
         }
-        //Skip leftover spaces (if any)
-        skipSpaces(start,n,first);
-        skipSpaces(target,n,second);
-
-        return first==n && second==n;
     }
+    bool canChange(string s, string t) {
+        int n = s.length();
+        int first = 0;
+        int second = 0;
+        int prevIdx = -1;
+        
+        while(first<n){
+        skipspaces(s,n,first);
+        skipspaces(t,n,second);
+        
+        if(first==n and second==n) return true;
+        if(s[first]!=t[second]) return false;
+        
+        if(s[first]=='L' and ( (second <= prevIdx)or (second > first) )){
+            return false;
+        }
+        else if(s[first]=='R' and second < first){
+            return false;
+        }
+         
+         first++;
+         second++;
+    }
+           skipspaces(s,n,first);
+           skipspaces(t,n,second);
+           
+           return first==n and second==n;
+           }
 };
